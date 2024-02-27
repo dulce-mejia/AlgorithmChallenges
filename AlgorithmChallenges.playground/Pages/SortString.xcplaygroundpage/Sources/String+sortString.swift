@@ -2,7 +2,8 @@ extension String {
     public func sortString() -> String {
         var lowercased = ""
         var uppercased = ""
-        var numbers = ""
+        var evens = ""
+        var odds = ""
         var symbols = ""
         
         let arrayString = Array(self)
@@ -14,16 +15,16 @@ extension String {
                 uppercased.append(element)
             } else if element.isNumber {
                 guard let number = Int(String(element)) else { return }
-                if number % 2 != 0 {
-                    numbers.insert(element, at: numbers.startIndex)
+                if (number % 2) != 0 {
+                    odds.append(element)
                 } else {
-                    numbers.append(element)
+                    evens.append(element)
                 }
             } else {
                 symbols.append(element)
             }
         }
-        return lowercased + uppercased + numbers + symbols
+        return lowercased + uppercased + (odds + evens) + symbols
     }
 }
 

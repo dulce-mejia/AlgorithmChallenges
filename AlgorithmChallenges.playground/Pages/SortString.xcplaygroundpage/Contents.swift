@@ -1,3 +1,5 @@
+import XCTest
+
 //Daily Algorithm Challenge
 
 /***Title: Alphanumeric String Sort
@@ -8,35 +10,50 @@ Uppercase letters go after Lowercase
 Odd numbers go before Even numbers
 Any character that is not a letter or number should go after the letters and numbers*/
 
-let result = "4D.a7@cCb".sortString()
+let result = "4D.a7@eCb".sortString()
 print(result)
 
+SortStringTests.defaultTestSuite.run()
 
-extension String {
-    func sortString() -> String {
-        var lowercased = ""
-        var uppercased = ""
-        var numbers = ""
-        var symbols = ""
-        
-        let arrayString = Array(self)
-        
-        arrayString.forEach { element in
-            if element.isLowercase {
-                lowercased.append(element)
-            } else if element.isUppercase {
-                uppercased.append(element)
-            } else if element.isNumber {
-                guard let number = Int(String(element)) else { return }
-                if number % 2 != 0 {
-                    numbers.insert(element, at: numbers.startIndex)
-                } else {
-                    numbers.append(element)
-                }
-            } else {
-                symbols.append(element)
-            }
-        }
-        return lowercased + uppercased + numbers + symbols
+
+
+
+
+
+
+
+// UnitTests Class
+
+class SortStringTests: XCTestCase {
+    override func setUp() {
+        super.setUp()
+    }
+    
+    func testSortString_allElements() {
+        // Given
+        let stringExample = "4D.a7@eCb"
+        // When
+        let result = stringExample.sortString()
+        // Then
+        XCTAssertEqual(result, "aebDC74.@")
+    }
+    
+    func testSortString_OnlyNumbers() {
+        // Given
+        let stringExample = "80734821"
+        // When
+        let result = stringExample.sortString()
+        // Then
+        XCTAssertEqual(result, "73180482")
+    }
+    
+    func testSortString_OnlyLowercasedSymbols() {
+        // Given
+        let stringExample = ".di@r_"
+        // When
+        let result = stringExample.sortString()
+        // Then
+        XCTAssertEqual(result, "dir.@_")
     }
 }
+
