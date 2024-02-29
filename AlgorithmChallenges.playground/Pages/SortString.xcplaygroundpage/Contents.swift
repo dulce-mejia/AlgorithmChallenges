@@ -55,5 +55,14 @@ class SortStringTests: XCTestCase {
         // Then
         XCTAssertEqual(result, "dir.@_")
     }
+    
+    func testSortString_OnlyLowercasedSymbols2() {
+        // Given
+        let stringExample = ".diár_ñ"
+        // When
+        let result = stringExample.sortString()
+        // Then
+        XCTAssertEqual(result, "diárñ._")
+    }
 }
 
