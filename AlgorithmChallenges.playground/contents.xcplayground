@@ -3,5 +3,6 @@
     <pages>
         <page name='SortString'/>
         <page name='TicTacToe'/>
+        <page name='PascalTriangle'/>
     </pages>
 </playground>

@@ -2,7 +2,7 @@
 import XCTest
 // Find Winner on a Tic Tac Toe Game
 
-let input1: [(Int, Int)] = [(0,0),(2,0),(1,1),(2,1),(2,2)]
+let input1: [(Int, Int)] = [(0,2),(2,0),(1,1),(2,1),(2,0)]
 
 let input2: [(Int, Int)] = [(0,0),(1,1),(0,1),(0,2),(1,0),(2,0)]
 
@@ -46,8 +46,6 @@ func playTicTacToe(_ input: [(Int, Int)]) -> String {
   } else if isWinner(playerB) { // Determine if playerB wins
     return "PlayerB wins"
   }
-  
-    
     
   return winner
 }
@@ -88,7 +86,7 @@ class TicTacToeTests: XCTestCase {
     
     func testInputsWrongCoordinate() {
         // Given
-        let input: [(Int, Int)] = [(3,1),(2,0),(1,1),(2,1),(2,2)]
+        let input: [(Int, Int)] = [(0,1),(2,0),(1,1),(2,3),(2,2)]
         // When
         let result = playTicTacToe(input)
         // Then
